@@ -11,6 +11,7 @@ import CreateBook from './pages/BookStore/CreateBook';
 import ReadBook from './pages/BookStore/ReadBook';
 
 //Admin
+import AdminHome from './pages/Admin/AdminHome';
 import Log from './pages/Admin/AdminLog';
 import Todo from './pages/Admin/AdminTodo';
 
@@ -24,6 +25,7 @@ function App() {
 						<Route path="/book/summary" element={<BookAppSummary/>}/>
 						<Route path="/book/create" element={<CreateBook/>}/>
 						<Route path="/book/list/" element={<ReadBook/>}/>
+						<Route path="/admin/" element={<AdminHome/>}/>
 						<Route path="/admin/log/" element={<Log/>}/>
 						<Route path="/admin/todo/" element={<Todo/>}/>
 						<Route path="/" element={<Home/>}/>

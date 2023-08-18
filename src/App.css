@@ -8,3 +8,15 @@
 :root {
     --point-color: #459e45;
 }
+
+.clickable {
+    cursor: pointer;
+}
+.clickable:hover {
+    color: #d85635;
+}
+
+.checkedTodo {
+    text-decoration: line-through;
+    color: gray;
+}
