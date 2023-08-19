@@ -1,22 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
 
 * {
-    font-family: 'Poppins', sans-serif;
-    font-family: 'Roboto', sans-serif;
+	font-family: 'Poppins', sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 :root {
-    --point-color: #459e45;
+	--point-color: #459e45;
 }
 
 .clickable {
-    cursor: pointer;
+	cursor: pointer;
 }
 .clickable:hover {
-    color: #d85635;
+	color: #d85635;
 }
 
 .checkedTodo {
-    text-decoration: line-through;
-    color: gray;
+	text-decoration: line-through;
+	color: gray;
 }

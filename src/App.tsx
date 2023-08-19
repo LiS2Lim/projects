@@ -4,6 +4,7 @@ import './App.css'
 //Core
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import Login from './pages/Login/Login';
 
 //BookStore
 import BookAppSummary from './pages/BookStore/BookAppSummary';
@@ -22,13 +23,14 @@ function App() {
 			<Navbar />
 			<div className='container py-3'>
 				<Routes>
-						<Route path="/book/summary" element={<BookAppSummary/>}/>
-						<Route path="/book/create" element={<CreateBook/>}/>
-						<Route path="/book/list/" element={<ReadBook/>}/>
-						<Route path="/admin/" element={<AdminHome/>}/>
-						<Route path="/admin/log/" element={<Log/>}/>
-						<Route path="/admin/todo/" element={<Todo/>}/>
-						<Route path="/" element={<Home/>}/>
+					<Route path="/book/summary" element={<BookAppSummary/>}/>
+					<Route path="/book/create" element={<CreateBook/>}/>
+					<Route path="/book/list/" element={<ReadBook/>}/>
+					<Route path="/admin/" element={<AdminHome/>}/>
+					<Route path="/admin/log/" element={<Log/>}/>
+					<Route path="/admin/todo/" element={<Todo/>}/>
+					<Route path="/login" element={<Login/>}/>
+					<Route path="/" element={<Home/>}/>
 				</Routes>
 			</div>
 		</BrowserRouter>
