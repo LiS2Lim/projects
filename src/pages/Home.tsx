@@ -21,7 +21,10 @@ export default () => {
 		<>
 			<h1>作業記録</h1>
 			<hr/>
-			<p>2023-08-18 | <span className="badge rounded-pill bg-success">作業中</span> TODOリストのフロント側実装(with React, TypeScript)</p>
+			<p>2023-08-21 | <span className="badge rounded-pill bg-success">作業中</span> TODOリストのフロント側実装(with React, TypeScript)</p>
+			<p>2023-08-21 | ログインページデザイン追加</p>
+			<p>2023-08-21 | HTTPS化(SSLインストール)</p>
+			<p>2023-08-18 | TODOリストのフロント側実装(with React, TypeScript)</p>
 			<p>2023-08-17 | TODOリストのRestAPI作成</p>
 			<p>2023-08-16 | 削除・編集機能の追加</p>
 			<p>2023-08-16 | ページデザイン改修</p>
