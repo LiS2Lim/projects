@@ -23,6 +23,9 @@ export default () => {
 						</ul>
 					</li> */}
 				</ul>
+				<form>
+					<Link className='btn btn-outline-success' to="/login">Login</Link>
+				</form>
 			</div>
 		</div>
 	)
