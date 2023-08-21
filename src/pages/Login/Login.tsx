@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
 import s from '../../css/Login.module.css';
-import { Link } from 'react-router-dom';
 
 export default () => {
 	const [ booSignin, setbooSignin ] = useState<boolean>(true);
+	const navi = useNavigate();
 
 	const signin = () => {
 		setbooSignin(!booSignin);
@@ -11,6 +13,7 @@ export default () => {
 
 	return (
 		<div className={`${s.body} ${booSignin ? s.bodyActive : ""}`}>
+			<button className={`${s.back} btn`} onClick={() => { navi(-1);}}>Back</button>
 			<div className={s.container}>
 
 				<div className={s.blueBg}>

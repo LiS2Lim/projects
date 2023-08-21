@@ -9,7 +9,7 @@ export type todoType = {
 }
 
 export default () => {
-	const baseUrl = "http://api.li-lim.com/admin/todo";
+	const baseUrl = "https://api.li-lim.com/admin/todo";
 	const [ content, setContent ] = useState<string>("");
 	const [ todos, setTodos ] = useState<[todoType]>();
 
