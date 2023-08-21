@@ -20,3 +20,10 @@
 	text-decoration: line-through;
 	color: gray;
 }
+
+.navbar-brand i {
+	color: var(--point-color);
+}
+.navbar-brand:hover i {
+	color: #000;
+}

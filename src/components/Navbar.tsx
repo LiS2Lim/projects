@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
 
-import '../css/Navbar.css';
-
 export default () => {
 	return (
 		<div className="navbar navbar-expand-lg navbar-light bg-light">
