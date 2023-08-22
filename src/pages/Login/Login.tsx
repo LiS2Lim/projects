@@ -19,7 +19,7 @@ export default () => {
 		e.preventDefault;
 		if(password !== passwordCheck) {
 			alert("パスワードが一致しません")
-			return null;
+			return;
 		}
 		await fetch(`${baseUrl}/user`, {
 			method:"POST",
@@ -34,7 +34,6 @@ export default () => {
 		.then(response => {
 			if(response.ok) {
 				alert("登録成功");
-				setbooSignin(true);
 			}
 			else alert("登録失敗");
 		})
