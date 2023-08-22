@@ -1,15 +1,43 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import s from '../../css/Login.module.css';
 
 export default () => {
 	const baseUrl = `${import.meta.env.VITE_API_URL}`; 
-	const [ booSignin, setbooSignin ] = useState<boolean>(true);
 	const navi = useNavigate();
+	const [ booSignin, setbooSignin ] = useState<boolean>(true);
+	const [ username, setUsername ] = useState<String>();
+	const [ password, setPassword ] = useState<String>();
+	const [ passwordCheck, setPasswordCheck ] = useState<String>();
 
 	const signin = () => {
 		setbooSignin(!booSignin);
+	}
+
+	const createUser = async (e:FormEvent) => {
+		e.preventDefault;
+		if(password !== passwordCheck) {
+			alert("パスワードが一致しません")
+			return null;
+		}
+		await fetch(`${baseUrl}/user`, {
+			method:"POST",
+			headers: {
+				"Content-Type":"application/json"
+			},
+			body: JSON.stringify({
+				username: username,
+				password: password
+			})
+		})
+		.then(response => {
+			if(response.ok) {
+				alert("登録成功");
+				setbooSignin(true);
+			}
+			else alert("登録失敗");
+		})
 	}
 
 	return (
@@ -39,11 +67,11 @@ export default () => {
 						</form>
 					</div>
 					<div className={`${s.form} ${s.signupForm}`}>
-						<form>
+						<form onSubmit={e => createUser(e)}>
 							<h3>新規登録</h3>
-							<input type='text' placeholder='アカウント名' />
-							<input type='password' placeholder='パスワード' />
-							<input type='password' placeholder='パスワード確認' />
+							<input type='text' onChange={e => setUsername(e.target.value)} placeholder='アカウント名' />
+							<input type='password' onChange={e => setPassword(e.target.value)} placeholder='パスワード' />
+							<input type='password' onChange={e => setPasswordCheck(e.target.value)} placeholder='パスワード確認' />
 							<input type='submit' value="登録" />
 						</form>
 					</div>
