@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import s from '../../css/Login.module.css';
 
 export default () => {
+	const baseUrl = `${import.meta.env.VITE_API_URL}`; 
 	const [ booSignin, setbooSignin ] = useState<boolean>(true);
 	const navi = useNavigate();
 

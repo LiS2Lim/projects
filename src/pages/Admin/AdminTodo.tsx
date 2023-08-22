@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from "react"
+import { FormEvent, useEffect, useState } from "react";
 
 export type todoType = {
 	id:number,
@@ -9,7 +9,7 @@ export type todoType = {
 }
 
 export default () => {
-	const baseUrl = "https://api.li-lim.com/admin/todo";
+	const baseUrl = `${import.meta.env.VITE_API_URL}/admin/todo`;
 	const [ content, setContent ] = useState<string>("");
 	const [ todos, setTodos ] = useState<[todoType]>();
 

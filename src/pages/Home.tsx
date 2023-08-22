@@ -4,7 +4,7 @@ import { todoType } from "./Admin/AdminTodo";
 
 export default () => {
 
-	const baseUrl = "https://api.li-lim.com/admin/todo";
+	const baseUrl = `${import.meta.env.VITE_API_URL}/admin/todo`;
 	const [ todos, setTodos ] = useState<[todoType]>();
 
 	const getTodos = async () => {
