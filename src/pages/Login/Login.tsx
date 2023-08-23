@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import s from '../../css/Login.module.css';
 
 export default () => {
-	const baseUrl = `${import.meta.env.VITE_API_URL}`; 
+	const baseUrl = `${import.meta.env.VITE_API_URL}/user`; 
 	const navi = useNavigate();
 	const [ booSignin, setbooSignin ] = useState<boolean>(true);
 	const [ username, setUsername ] = useState<String>();
@@ -16,26 +16,26 @@ export default () => {
 	}
 
 	const createUser = async (e:FormEvent) => {
-		e.preventDefault;
-		if(password !== passwordCheck) {
-			alert("パスワードが一致しません")
-			return;
-		}
-		await fetch(`${baseUrl}/user`, {
+		e.preventDefault();
+		if(password !== passwordCheck) { alert("パスワードが一致しません"); return;	}
+		await fetch(`${baseUrl}`, {
 			method:"POST",
 			headers: {
 				"Content-Type":"application/json"
 			},
 			body: JSON.stringify({
-				username: username,
-				password: password
+				"username": username,
+				"password": password
 			})
 		})
 		.then(response => {
 			if(response.ok) {
 				alert("登録成功");
+				signin();
 			}
-			else alert("登録失敗");
+			else {
+				alert("Error code: " + response.status);
+			}
 		})
 	}
 
