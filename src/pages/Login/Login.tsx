@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import s from '../../css/Login.module.css';
 
 export default () => {
-	const baseUrl = `${import.meta.env.VITE_API_URL}/user`; 
+	const baseUrl = `${import.meta.env.VITE_API_URL}`; 
 	const navi = useNavigate();
 	const [ booSignin, setbooSignin ] = useState<boolean>(true);
 	const [ username, setUsername ] = useState<String>();
@@ -12,13 +12,15 @@ export default () => {
 	const [ passwordCheck, setPasswordCheck ] = useState<String>();
 
 	const signin = () => {
+		setUsername("");
+		setPassword("");
 		setbooSignin(!booSignin);
 	}
 
 	const createUser = async (e:FormEvent) => {
 		e.preventDefault();
 		if(password !== passwordCheck) { alert("パスワードが一致しません"); return;	}
-		await fetch(`${baseUrl}`, {
+		await fetch(`${baseUrl}/user`, {
 			method:"POST",
 			headers: {
 				"Content-Type":"application/json"
@@ -35,6 +37,31 @@ export default () => {
 			}
 			else {
 				alert("Error code: " + response.status);
+			}
+		})
+	}
+
+	const login = async (e:FormEvent) => {
+		e.preventDefault();
+		await fetch(`${baseUrl}/login`, {
+			method:"POST",
+			headers: {
+				"Content-Type":"application/json"
+			},
+			body: JSON.stringify({
+				"username": username,
+				"password": password
+			})
+		})
+		.then(res => res.json())
+		.then(result => {
+			if(result.token) {
+				sessionStorage.setItem("token",result.token);
+				alert("ログインしました");
+				navi("/");
+			}
+			else {
+				alert("Error code: " + result.code)
 			}
 		})
 	}
@@ -57,10 +84,10 @@ export default () => {
 
 				<div className={`${s.formBx} ${booSignin ? "" : s.active}`}>
 					<div className={`${s.form} ${s.signinForm}`}>
-						<form>
+						<form onSubmit={e => login(e)}>
 							<h3>ログイン</h3>
-							<input type='text' placeholder='アカウント名' />
-							<input type='password' placeholder='パスワード' />
+							<input type='text' onChange={e => setUsername(e.target.value)} placeholder='アカウント名' />
+							<input type='password' onChange={e => setPassword(e.target.value)} placeholder='パスワード' />
 							<input type='submit' value="ログイン" />
 							<Link className={s.forget} to="/forget">パスワードを忘れた場合</Link>
 						</form>
