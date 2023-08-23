@@ -36,12 +36,16 @@ export default () => {
 				getTodos();
 				setContent("");
 			}
-			else alert("登録失敗");
+			else alert("ログインが必要です");
+
 		})
 	}
 	const deleteTodo = (id:number) => {
 		fetch(`${baseUrl}?id=${id}`, {
-			method:"DELETE"
+			method:"DELETE",
+			headers: {
+				"Authorization": sessionStorage.getItem("token") || ""
+			},
 		}).then(response => {
 			if(response.ok) {
 				getTodos();
@@ -51,7 +55,10 @@ export default () => {
 	}
 	const updateTodo = (id:number) => {
 		fetch(`${baseUrl}?id=${id}`, {
-			method:"PUT"
+			method:"PUT",
+			headers: {
+				"Authorization": sessionStorage.getItem("token") || ""
+			},
 		}).then(response => {
 			if(response.status !== 200) alert("変更失敗");
 			getTodos();
