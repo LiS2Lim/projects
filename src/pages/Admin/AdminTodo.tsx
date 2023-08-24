@@ -37,7 +37,6 @@ export default () => {
 				setContent("");
 			}
 			else alert("ログインが必要です");
-
 		})
 	}
 	const deleteTodo = (id:number) => {
@@ -50,7 +49,7 @@ export default () => {
 			if(response.ok) {
 				getTodos();
 			}
-			else alert("削除失敗");
+			else alert("ログインが必要です");
 		})
 	}
 	const updateTodo = (id:number) => {
@@ -60,8 +59,10 @@ export default () => {
 				"Authorization": sessionStorage.getItem("token") || ""
 			},
 		}).then(response => {
-			if(response.status !== 200) alert("変更失敗");
-			getTodos();
+			if(response.ok) {
+				getTodos();
+			}
+			else alert("ログインが必要です");
 		})
 	}
 

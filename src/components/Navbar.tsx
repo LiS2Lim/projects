@@ -1,6 +1,21 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+
+import { loginState } from '../State';
 
 export default () => {
+	const [ isLogin, setIsLogin ] = useRecoilState(loginState)
+	const logout = () => {
+		sessionStorage.removeItem("token");
+		setIsLogin(false);
+		alert("ログアウトしました");
+	}
+
+	useEffect(()=>{
+		setIsLogin(sessionStorage.getItem("token") != null ? true : false);
+	},[ isLogin ])
+
 	return (
 		<div className="navbar navbar-expand-lg navbar-light bg-light">
 			<div className='container-fluid'>
@@ -24,7 +39,10 @@ export default () => {
 					</li> */}
 				</ul>
 				<form>
-					<Link className='btn btn-outline-success' to="/login">Login</Link>
+					{!isLogin ? 
+						<Link className='btn btn-outline-success' to="/login">Login</Link>:
+						<button className='btn btn-outline-success' onClick={ logout }>Logout</button>
+					}
 				</form>
 			</div>
 		</div>

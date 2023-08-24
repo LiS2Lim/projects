@@ -1,9 +1,13 @@
 import { FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+
+import { loginState } from '../../State'; 
 
 import s from '../../css/Login.module.css';
 
 export default () => {
+	const [ isLogin, setIsLogin ] = useRecoilState(loginState);
 	const baseUrl = `${import.meta.env.VITE_API_URL}`; 
 	const navi = useNavigate();
 	const [ booSignin, setbooSignin ] = useState<boolean>(true);
@@ -58,6 +62,7 @@ export default () => {
 			if(result.token) {
 				sessionStorage.setItem("token",result.token);
 				alert("ログインしました");
+				setIsLogin(true);
 				navi("/");
 			}
 			else {
