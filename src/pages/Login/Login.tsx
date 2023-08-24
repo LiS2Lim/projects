@@ -63,6 +63,7 @@ export default () => {
 				sessionStorage.setItem("token",result.token);
 				alert("ログインしました");
 				setIsLogin(true);
+				console.log(isLogin);
 				navi("/");
 			}
 			else {

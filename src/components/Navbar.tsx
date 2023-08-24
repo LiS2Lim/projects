@@ -5,7 +5,7 @@ import { useRecoilState } from 'recoil';
 import { loginState } from '../State';
 
 export default () => {
-	const [ isLogin, setIsLogin ] = useRecoilState(loginState)
+	const [ isLogin, setIsLogin ] = useRecoilState(loginState);
 	const logout = () => {
 		sessionStorage.removeItem("token");
 		setIsLogin(false);
